@@ -12,6 +12,9 @@
 		5722380520B731A8009825A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5722380320B731A8009825A7 /* Main.storyboard */; };
 		5722380720B731AA009825A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5722380620B731AA009825A7 /* Assets.xcassets */; };
 		5722380A20B731AA009825A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5722380820B731AA009825A7 /* LaunchScreen.storyboard */; };
+		5722381220B73C77009825A7 /* Farm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381120B73C77009825A7 /* Farm.swift */; };
+		5722381420B73E69009825A7 /* FarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381320B73E69009825A7 /* FarmTableViewController.swift */; };
+		5722381620B7422D009825A7 /* FarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381520B7422D009825A7 /* FarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		5722380620B731AA009825A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5722380920B731AA009825A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5722380B20B731AA009825A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5722381120B73C77009825A7 /* Farm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Farm.swift; sourceTree = "<group>"; };
+		5722381320B73E69009825A7 /* FarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmTableViewController.swift; sourceTree = "<group>"; };
+		5722381520B7422D009825A7 /* FarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +60,15 @@
 		572237FE20B731A8009825A7 /* MilkFarm */ = {
 			isa = PBXGroup;
 			children = (
+				5722380620B731AA009825A7 /* Assets.xcassets */,
 				572237FF20B731A8009825A7 /* AppDelegate.swift */,
 				5722380120B731A8009825A7 /* ViewController.swift */,
-				5722380320B731A8009825A7 /* Main.storyboard */,
-				5722380620B731AA009825A7 /* Assets.xcassets */,
-				5722380820B731AA009825A7 /* LaunchScreen.storyboard */,
 				5722380B20B731AA009825A7 /* Info.plist */,
+				5722380820B731AA009825A7 /* LaunchScreen.storyboard */,
+				5722380320B731A8009825A7 /* Main.storyboard */,
+				5722381120B73C77009825A7 /* Farm.swift */,
+				5722381320B73E69009825A7 /* FarmTableViewController.swift */,
+				5722381520B7422D009825A7 /* FarmViewController.swift */,
 			);
 			path = MilkFarm;
 			sourceTree = "<group>";
@@ -135,6 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5722381220B73C77009825A7 /* Farm.swift in Sources */,
+				5722381420B73E69009825A7 /* FarmTableViewController.swift in Sources */,
+				5722381620B7422D009825A7 /* FarmViewController.swift in Sources */,
 				5722380220B731A8009825A7 /* ViewController.swift in Sources */,
 				5722380020B731A8009825A7 /* AppDelegate.swift in Sources */,
 			);
