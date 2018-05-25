@@ -35,13 +35,16 @@
                             <outlet property="delegate" destination="YbV-Wt-BwR" id="Sgg-Lq-gin"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Milk Farms" id="7RX-4P-fYp">
-                        <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="yTD-HI-y0B">
+                        <barButtonItem key="leftBarButtonItem" title="Map" style="done" id="YvL-gF-okx"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yTD-HI-y0B">
                             <connections>
                                 <segue destination="4e2-v2-9jg" kind="presentation" id="TED-nV-xZA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="yTD-HI-y0B" id="xyP-IP-ogT"/>
                     </connections>
@@ -174,12 +177,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Farm" id="GCX-eP-2Pd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="SnX-vY-fWp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SnX-vY-fWp">
                             <connections>
                                 <segue destination="FhC-7B-1jC" kind="unwind" identifier="cancelUnwind" unwindAction="unwindToToDoListWithSegue:" id="FGp-8o-UgW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="VXD-jp-wqa">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="VXD-jp-wqa">
                             <connections>
                                 <segue destination="FhC-7B-1jC" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="Zjn-3j-wzF"/>
                             </connections>
