@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapController: UIViewController {
+//CLLocationManagerDelegate
+
+class MapController: UIViewController, MKMapViewDelegate {
     
     var addresses: [String] = []
     var points: [MKPlacemark] = []
@@ -23,6 +25,7 @@ class MapController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.milkMap.delegate = self
         addresses.append("Av. SAP, 188, Cristo Rei, Sao Leopoldo, RS, Brasil")
         addresses.append("Rua Argemiro Ribeiro Moreira, 31, Nova Sapucaia, Sapucaia do Sul, RS, Brasil")
         addresses.append("Rua Natalicio Alves, 90, Parque da Matriz, Cachoeirinha, RS, Brasil")
@@ -32,7 +35,7 @@ class MapController: UIViewController {
     func updateMilkMap () {
         self.milkMap.showAnnotations(self.points, animated: true)
         for i in 0..<points.count-1 {
-            requestDirections(source: points[i].coordinate, destination: points[i+1].coordinate)
+            requestDirections(source: points[i].coordinate, destination: points[(i+1)].coordinate)
         }
     }
     
@@ -57,8 +60,11 @@ class MapController: UIViewController {
                     if error == nil {
                         if let res = response {
                             for local in res.mapItems {
+                                
+                                
                                 DispatchQueue.main.async {
                                     //self.milkMap.addAnnotation(local.placemark)
+                                    
                                     self.points.append(local.placemark)
                                 }
                             }
@@ -73,20 +79,30 @@ class MapController: UIViewController {
         let request = MKDirectionsRequest()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: source))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))
-        request.requestsAlternateRoutes = true
+        request.requestsAlternateRoutes = false
         request.transportType = .automobile
         
         let directions = MKDirections(request: request)
         directions.calculate{ (response, error) in
             if error == nil {
-                if let routes = response?.routes {
-                    for route in routes {
-                        print(route.distance)
-                        self.milkMap.addOverlays([route.polyline])
-                    }
+                if let route = response?.routes.first {
+                    self.milkMap.addOverlays([route.polyline])
                 }
+//                if let routes = response?.routes {
+//                    for route in routes {
+//                        print(route.distance)
+//                        self.milkMap.addOverlays([route.polyline])
+//                    }
+//                }
             }
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.red
+        renderer.lineWidth = 1.0
+        return renderer
     }
 }
 
