@@ -44,6 +44,25 @@ class ViewController: UIViewController {
         }
     }
     
+    func requestDirections(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: source))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))
+        request.requestsAlternateRoutes = true
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculate{ (response, error) in
+            if error == nil {
+                if let routes = response?.routes {
+                    for route in routes {
+                        print(route.distance)
+                        self.milkMap.addOverlays([route.polyline])
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func test(_ sender: Any) {
         parseAdresses()
