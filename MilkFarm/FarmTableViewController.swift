@@ -59,6 +59,15 @@ class FarmTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow!
             let selected = farms[indexPath.row]
             farmViewController.farm = selected
+        } else if segue.identifier == "showMap" {
+            // Sort farms by date and create array with addresses
+            let sortedFarms = farms.sorted(by: { $0.productionTime < $1.productionTime })
+            var addresses = [String]()
+            for farm in sortedFarms {
+                addresses.append(farm.address)
+            }
+            let mapController = segue.destination as! MapController
+            mapController.addresses = addresses
         }
     }
     
