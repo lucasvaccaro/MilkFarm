@@ -14,6 +14,7 @@
 		5722381220B73C77009825A7 /* Farm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381120B73C77009825A7 /* Farm.swift */; };
 		5722381420B73E69009825A7 /* FarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381320B73E69009825A7 /* FarmTableViewController.swift */; };
 		5722381620B7422D009825A7 /* FarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722381520B7422D009825A7 /* FarmViewController.swift */; };
+		579C53BA20B83B710083DF00 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C53B920B83B710083DF00 /* MapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5722381120B73C77009825A7 /* Farm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Farm.swift; sourceTree = "<group>"; };
 		5722381320B73E69009825A7 /* FarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmTableViewController.swift; sourceTree = "<group>"; };
 		5722381520B7422D009825A7 /* FarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmViewController.swift; sourceTree = "<group>"; };
+		579C53B920B83B710083DF00 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				5722381120B73C77009825A7 /* Farm.swift */,
 				5722381320B73E69009825A7 /* FarmTableViewController.swift */,
 				5722381520B7422D009825A7 /* FarmViewController.swift */,
+				579C53B920B83B710083DF00 /* MapController.swift */,
 			);
 			path = MilkFarm;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				5722381220B73C77009825A7 /* Farm.swift in Sources */,
 				5722381420B73E69009825A7 /* FarmTableViewController.swift in Sources */,
 				5722381620B7422D009825A7 /* FarmViewController.swift in Sources */,
+				579C53BA20B83B710083DF00 /* MapController.swift in Sources */,
 				5722380020B731A8009825A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
