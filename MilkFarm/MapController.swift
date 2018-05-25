@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-//CLLocationManagerDelegate
-
 class MapController: UIViewController, MKMapViewDelegate {
     
     var addresses: [String] = []
@@ -19,16 +17,9 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var milkMap: MKMapView!
     
-    @IBAction func test(_ sender: Any) {
-        updateMilkMap()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.milkMap.delegate = self
-        addresses.append("Av. SAP, 188, Cristo Rei, Sao Leopoldo, RS, Brasil")
-        addresses.append("Rua Argemiro Ribeiro Moreira, 31, Nova Sapucaia, Sapucaia do Sul, RS, Brasil")
-        addresses.append("Rua Natalicio Alves, 90, Parque da Matriz, Cachoeirinha, RS, Brasil")
         addressesToPoints()
     }
     
@@ -60,12 +51,9 @@ class MapController: UIViewController, MKMapViewDelegate {
                     if error == nil {
                         if let res = response {
                             for local in res.mapItems {
-                                
-                                
                                 DispatchQueue.main.async {
-                                    //self.milkMap.addAnnotation(local.placemark)
-                                    
                                     self.points.append(local.placemark)
+                                    self.updateMilkMap()
                                 }
                             }
                         }
@@ -88,12 +76,6 @@ class MapController: UIViewController, MKMapViewDelegate {
                 if let route = response?.routes.first {
                     self.milkMap.addOverlays([route.polyline])
                 }
-//                if let routes = response?.routes {
-//                    for route in routes {
-//                        print(route.distance)
-//                        self.milkMap.addOverlays([route.polyline])
-//                    }
-//                }
             }
         }
     }
