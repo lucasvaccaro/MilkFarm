@@ -10,10 +10,25 @@ import UIKit
 import MapKit
 import CoreLocation
 
+class MilkAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    var title: String!
+    var subtitle: String!
+    var image: UIImage!
+    
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
+        self.title = title
+        self.subtitle = subtitle
+    }
+}
+
 class MapController: UIViewController, MKMapViewDelegate {
     
-    var addresses: [String] = []
-    var points: [MKPlacemark] = []
+    //var addresses: [String] = []
+    var farms: [Farm] = []
+    //var points: [MKPlacemark] = []
+    var points: [MilkAnnotation] = []
     
     @IBOutlet weak var milkMap: MKMapView!
     
@@ -39,10 +54,10 @@ class MapController: UIViewController, MKMapViewDelegate {
         queue.name = "Geocode queue"
         queue.maxConcurrentOperationCount = 1
         
-        for address in addresses {
+        for farm in farms {
             queue.addOperation {
                 let request = MKLocalSearchRequest()
-                request.naturalLanguageQuery = address
+                request.naturalLanguageQuery = farm.address
                 request.region = self.milkMap.region
                 
                 let search = MKLocalSearch(request: request)
@@ -52,7 +67,9 @@ class MapController: UIViewController, MKMapViewDelegate {
                         if let res = response {
                             for local in res.mapItems {
                                 DispatchQueue.main.async {
-                                    self.points.append(local.placemark)
+                                    let point = MilkAnnotation(title: farm.name, subtitle: "Barrels: \(farm.numberOfBarrels)", coordinate: local.placemark.coordinate)
+                                    //self.points.append(local.placemark)
+                                    self.points.append(point)
                                     self.updateMilkMap()
                                 }
                             }
@@ -85,6 +102,19 @@ class MapController: UIViewController, MKMapViewDelegate {
         renderer.strokeColor = UIColor.red
         renderer.lineWidth = 1.0
         return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "pin"
+        var annotationView = self.milkMap.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "milkBarrel")
+        return annotationView
     }
 }
 
